@@ -1,0 +1,84 @@
+version: 1
+
+brand:
+  name: "Глеб Лещук"
+  role: "AI Product Engineer"
+  telegram: "@coyotetime"
+  offer: "Внедряю ИИ-агентов, чтобы команда тратила время на развитие, а не на рутину"
+  offer_sub: "От аудита и прототипа до запуска и поддержки."
+
+fonts:                      # Google Fonts, кириллица, лицензия OFL
+  heading:
+    family: "Source Serif 4"
+    fallback: serif
+    weight: 600
+    letter_spacing_em: -0.010
+    case: none            # none | upper
+    line_height: 1.18
+  body:
+    family: "Rubik"
+    fallback: sans-serif
+    weight: 400
+    line_height: 1.45
+  numbers:                  # метрики результатов, номера шагов, формулы
+    family: "JetBrains Mono"
+    fallback: monospace
+    weight: 600
+  label:                    # надзаголовки, теги, подписи
+    font: numbers               # heading | body | numbers
+    weight: 600
+    case: upper
+    letter_spacing_em: 0.11
+
+type_scale:                 # px на холсте 1280×720
+  base: 22
+  ratio: 1.333
+  sizes:
+    label: 16
+    small: 17
+    body: 22
+    lead: 25
+    h3: 29
+    h2: 39
+    h1: 52
+    display: 69
+    metric: 79
+
+web:
+  base_px: 17
+  ratio: 1.25             # на экране шкала мягче, чем на слайде
+
+colors:
+  bg: "#141619"            # фон слайдов и страниц
+  surface: "#1D2024"       # карточки, плашки
+  text: "#EDEAE3"          # основной текст
+  muted: "#9DA1A8"         # второстепенный текст, подписи
+  border: "#30343A"        # линии, рамки, сетка
+  accent: "#F0A93A"        # цифры, кнопка, одно выделение на слайде
+  on_accent: "#141619"     # текст на акцентной заливке
+  accent_2: "#7FB7FF"      # редкий второй акцент: графики, статусы
+  inverse_bg: "#F0A93A"    # фон обложки и финального слайда
+  inverse_text: "#141619"  # текст на инверсном фоне
+
+contrast:                   # WCAG, справочно (норма для текста 4.5, для крупного 3.0)
+  text_on_bg: 15.1
+  muted_on_bg: 7.0
+  accent_on_bg: 9.0
+  on_accent: 9.0
+  inverse: 9.0
+
+shape:
+  radius: 12
+  border_width: 1
+  spacing_unit: 8           # все отступы кратны модулю
+  slide_padding: [64, 72]   # [сверху/снизу, слева/справа]
+
+components:
+  card: bar              # outline | filled | shadow | bar | plain
+  tag: caps                # pill | filled | caps
+  button: filled             # filled | outline | underline
+  heading_decoration: none   # none | line | dot | slash
+  background_pattern: dots    # none | grid | dots
+  screenshot_frame: shadow     # border | shadow | window
+  cover_inverse: false
+  cta_inverse: true

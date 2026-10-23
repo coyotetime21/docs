@@ -1,0 +1,6 @@
+{
+  "tinymist.rootPath": "${workspaceFolder}",
+  "tinymist.fontPaths": ["${workspaceFolder}/fonts"],
+  "tinymist.systemFonts": false,
+  "tinymist.exportPdf": "never"
+}
