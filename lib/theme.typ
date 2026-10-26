@@ -1,10 +1,4 @@
-// theme.typ — читает /style.yaml и превращает его в словарь `theme`.
-// Здесь только перевод значений из YAML в типы Typst, никакой вёрстки.
-// Пути с "/" считаются от корня проекта (typst --root .).
-
 #let style = yaml("/style.yaml")
-
-// ---------- Безопасное чтение ключей с умолчаниями ----------
 
 #let get(dict, path, default) = {
   let cur = dict
@@ -15,13 +9,8 @@
   cur
 }
 
-// ---------- Модуль отступов ----------
-
 #let unit = get(style, "shape.spacing_unit", 8)
-// u(n): отступ в n модулей. Все отступы в вёрстке берутся только через него.
 #let u(n) = n * unit * 1pt
-
-// ---------- Цвета ----------
 
 #let color-defaults = (
   bg: "#141619", surface: "#1D2024", text: "#EDEAE3", muted: "#9DA1A8",
@@ -34,7 +23,6 @@
   out
 }
 
-// Контраст по WCAG: нужен, чтобы решить, можно ли ставить акцент на инверсный фон.
 #let luminance(c) = {
   let ch = rgb(c).components(alpha: false).map(v => {
     let x = v / 100%
@@ -47,15 +35,12 @@
   (calc.max(la, lb) + 0.05) / (calc.min(la, lb) + 0.05)
 }
 
-// Палитра обычного слайда.
 #let pal-normal = (
   bg: colors.bg, surface: colors.surface, text: colors.text, muted: colors.muted,
   border: colors.border, accent: colors.accent, on-accent: colors.on_accent,
   accent-2: colors.accent_2,
 )
 
-// Палитра инверсного слайда (обложка/финал). Если акцент сливается с фоном
-// (контраст < 3), вместо него используется inverse_text.
 #let pal-inverse = {
   let (bg, fg) = (colors.inverse_bg, colors.inverse_text)
   let accent-ok = contrast(colors.accent, bg) >= 3
@@ -72,10 +57,6 @@
   )
 }
 
-// ---------- Шрифты ----------
-
-// Общие названия из CSS → встроенные в Typst шрифты (чтобы не было
-// предупреждений unknown font family). Для sans-serif встроенного нет.
 #let generic-fallback = (serif: "Libertinus Serif", monospace: "DejaVu Sans Mono")
 
 #let font-role(role, defaults) = {
@@ -97,7 +78,6 @@
   numbers: font-role("numbers", (family: "JetBrains Mono", weight: 600, line_height: 1.1)),
 )
 
-// Надзаголовки и теги ссылаются на одну из трёх ролей выше.
 #let label-font = {
   let base = fonts.at(get(style, "fonts.label.font", "body"), default: fonts.body)
   base + (
@@ -107,8 +87,6 @@
   )
 }
 
-// ---------- Размеры (px холста 1280×720 = pt) ----------
-
 #let size-defaults = (
   label: 16, small: 17, body: 22, lead: 25, h3: 29, h2: 39, h1: 52, display: 69, metric: 79,
 )
@@ -117,8 +95,6 @@
   for (key, v) in size-defaults { out.insert(key, get(style, "type_scale.sizes." + key, v) * 1pt) }
   out
 }
-
-// ---------- Форма и компоненты ----------
 
 #let pad = get(style, "shape.slide_padding", (64, 72))
 

@@ -1,6 +1,3 @@
-// main.typ — только сборка: настройки страницы и порядок слайдов.
-// Тексты: creds/content.yaml. Стиль: style.yaml. Вёрстка: lib/.
-
 #import "/lib/theme.typ": theme
 #import "/lib/slides.typ": *
 
@@ -26,8 +23,6 @@
 
 #cover(c.cover)
 #services(c.services)
-// Кейсы чередуются: текст справа, слева, справа…
-// Широкий скриншот (дашборд): колонка шире, высота по картинке, без обрезки.
 #let wide-shot = (columns: (1fr, 1.25fr), shot-height: auto)
 #for (i, item) in cases.enumerate() {
   let wide = item.at("screenshot", default: none) == "creds/assets/cases/sales.png"

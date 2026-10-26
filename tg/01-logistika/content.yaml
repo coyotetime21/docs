@@ -1,0 +1,37 @@
+intro:
+  label: "Логистика · Кейс"
+  title: "Клиент спрашивает «где мой груз», и ему отвечает агент, а не диспетчер"
+  company_label: "Компания"
+  company: "Розничная продажа строительных материалов: свой маркетплейс и несколько продавцов. Доставку до клиента компания берёт на себя."
+  pain_label: "Боль"
+  pain: "Диспетчеры половину дня отвечают на звонки и сообщения о статусе груза. В это время они не занимаются рейсами."
+  metric: "~120"
+  metric_caption: "обращений по статусу груза в день"
+
+solution:
+  label: "Решение"
+  title: "ИИ-ассистент в мессенджере"
+  text: "Агент берёт статус из GPS и системы учёта и отвечает клиенту. О задержках предупреждает сам. Нестандартные вопросы передаёт диспетчеру."
+  stack_label: "Стек"
+  stack:
+    - name: "Telegram"
+      logo: "tg/01-logistika/assets/logos/telegram.svg"
+    - name: "Python"
+      logo: "tg/01-logistika/assets/logos/python.svg"
+    - name: "PostgreSQL"
+      logo: "tg/01-logistika/assets/logos/postgresql.svg"
+    - name: "OpenRouter"
+      logo: "tg/01-logistika/assets/logos/openrouter.svg"
+  flow_label: "Как внедряли"
+  flow:
+    - "Брифинг: поиск боли"
+    - "Технический созвон"
+    - "Демонстрация MVP"
+    - "Внедрение"
+    - "Довольный заказчик и клиенты"
+
+chat:
+  label: "Как это выглядит"
+  screenshot: "creds/assets/cases/logistika.png"
+  metric: "~120 → 25"
+  metric_caption: "обращений к диспетчерам в день"

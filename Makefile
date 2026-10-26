@@ -5,7 +5,7 @@ SRC   := $(DIR)/main.typ
 SITE  := build
 TITLE ?= креды
 
-.PHONY: pdf watch png all clean fonts site
+.PHONY: pdf watch png all clean fonts site tg
 
 all: pdf png
 
@@ -19,12 +19,17 @@ png:
 	rm -f $(DIR)/slide-*.png
 	$(TYPST) compile $(FLAGS) --format png --ppi 144 $(SRC) "$(DIR)/slide-{0p}.png"
 
-# Страница для GitHub Pages: $(SITE)/$(DIR)/ (слайды + PDF), корень ведёт на $(DIR)/
 site: pdf png
 	rm -rf $(SITE)/$(DIR) && mkdir -p $(SITE)/$(DIR)
 	cp $(DIR)/$(DIR).pdf $(DIR)/slide-*.png $(SITE)/$(DIR)/
 	sh lib/site.sh $(DIR) "$(TITLE)" > $(SITE)/$(DIR)/index.html
 	printf '<meta http-equiv="refresh" content="0; url=$(DIR)/">\n' > $(SITE)/index.html
+
+tg:
+	for d in tg/*/; do \
+		rm -f $$d/slide-*.png; \
+		$(TYPST) compile $(FLAGS) --format png --ppi 192 $$d/main.typ "$$d/slide-{0p}.png" || exit 1; \
+	done
 
 fonts:
 	$(TYPST) fonts $(FLAGS) --variants
@@ -32,3 +37,4 @@ fonts:
 clean:
 	rm -f $(DIR)/$(DIR).pdf $(DIR)/slide-*.png
 	rm -rf $(SITE)
+	rm -f tg/*/slide-*.png

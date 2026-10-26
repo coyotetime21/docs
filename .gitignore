@@ -1,5 +1,6 @@
-# Результаты сборки (make pdf / make png): <виджет>/<виджет>.pdf и <виджет>/slide-*.png
 /*/*.pdf
 /*/slide-*.png
 /build/
+/tg/*/slide-*.png
+/tg/*/*.pdf
 .vscode/
